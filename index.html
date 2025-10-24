@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimpleBitcoin — Buy Bitcoin Instantly (UK & Europe)</title>
+  <meta name="description" content="Buy Bitcoin instantly in the UK and Europe. Fast, secure & FCA-focused — credit/debit card and bank transfers." />
+  <style>
+    :root{
+      --bg:#0f1724; /* deep navy */
+      --card:#0b1220;
+      --muted:#8892a6;
+      --accent:#f59e0b; /* warm gold */
+      --glass: rgba(255,255,255,0.04);
+      --success: #10b981;
+      --max-width:1100px;
+      --radius:14px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:linear-gradient(180deg,#071025 0%, #07102a 60%); color:#e6eef8; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      -webkit-text-size-adjust:100%;
+      padding:32px 20px;
+      display:flex; justify-content:center;
+      font-size:16px;
+    }
+    .site{width:100%; max-width:var(--max-width)}
+
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:linear-gradient(135deg, #111827, #0b1220);box-shadow:0 6px 18px rgba(2,6,23,0.6);font-weight:700;color:var(--accent)}
+    .brand h1{font-size:18px;margin:0}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px}
+    .btn{background:var(--accent);color:#081026;padding:10px 16px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;padding:36px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:18px}
+    @media(max-width:900px){.hero{grid-template-columns:1fr;padding:28px}}
+
+    .hero-left h2{font-size:34px;margin:0 0 14px}
+    .hero-left p{color:var(--muted);margin:0 0 18px;line-height:1.45}
+    .features{display:flex;gap:12px;flex-wrap:wrap}
+    .pill{background:var(--glass);padding:10px 12px;border-radius:10px;color:var(--muted);font-weight:600;font-size:14px}
+
+    /* Buy card */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
+    .currency-row{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+    .currency-row input[type="number"]{flex:1;padding:10px 12px;border-radius:10px;border:0;background:transparent;color:inherit;font-size:16px}
+    .currency-select{display:flex;gap:8px}
+    .currency-btn{padding:8px 10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.04);cursor:pointer}
+    .result{margin-top:10px;color:var(--muted);font-size:14px}
+
+    .payment-methods{display:flex;gap:10px;align-items:center;margin-top:14px}
+    .pm{display:flex;gap:8px;align-items:center;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,0.02);font-weight:600}
+
+    .how{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+    @media(max-width:900px){.how{grid-template-columns:1fr}}
+    .step{background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .step h4{margin:0 0 8px}
+    .trust{display:flex;gap:12px;align-items:center;margin-top:18px}
+    .trust p{margin:0;color:var(--muted)}
+
+    .footer{margin-top:28px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap}
+
+    /* modal */
+    .modal-bg{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center}
+    .modal{background:#051225;padding:20px;border-radius:12px;width:420px;max-width:92%}
+    .modal h3{margin-top:0}
+    .close{background:transparent;border:0;color:var(--muted);cursor:pointer}
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+
+    /* responsive container */
+    .container{max-width:var(--max-width);margin:0 auto}
+
+    /* subtle card shadow */
+    .card-shadow{box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+  </style>
+</head>
+<body>
+  <div class="site container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>₿</div>
+        <div>
+          <h1>SimpleBitcoin</h1>
+          <div class="small muted">Buy Bitcoin instantly — UK & Europe</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#how" class="muted">How it works</a>
+        <a href="#faq" class="muted">FAQ</a>
+        <button class="btn" id="signupTop">Buy Bitcoin Now</button>
+      </nav>
+    </header>
+
+    <main class="hero" role="main">
+      <div class="hero-left">
+        <h2>Buy Bitcoin instantly with cards & bank transfers</h2>
+        <p>SimpleBitcoin makes buying Bitcoin fast, secure and compliant. We’re UK-first and FCA-focused — built for retail users who want one thing: Bitcoin. No confusing options, no business sign-ups. </p>
+
+        <div class="features">
+          <div class="pill">Supports GBP & EUR</div>
+          <div class="pill">FCA-focused (UK)</div>
+          <div class="pill">Instant card purchases</div>
+          <div class="pill">Bank transfer options</div>
+        </div>
+
+        <div class="trust">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M12 1l3 2 6 2v6c0 5-3 9-9 12-6-3-9-7-9-12V5l6-2 3-2z" stroke="#274060" stroke-width="1.2" fill="#052034"/>
+            <path d="M9.5 12.5l1.8 1.8 4.2-4.2" stroke="#10b981" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <p style="margin:0;font-weight:700">Security-first</p>
+            <p class="muted" style="margin:0">Cold-storage partners • KYC & AML • PCI-compliant payments</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card card-shadow" aria-labelledby="buyTitle">
+        <h3 id="buyTitle" style="margin:0 0 8px">Buy Bitcoin</h3>
+        <p class="muted small" style="margin:0 0 12px">UK-first — prices shown in GBP by default. Live price fetched from CoinGecko.</p>
+
+        <div class="currency-row">
+          <label for="amount" class="muted small" style="width:72px;display:inline-block">Amount</label>
+          <input inputmode="decimal" id="amount" type="number" min="1" step="0.01" value="50" aria-label="Amount to spend" />
+          <div class="currency-select" role="tablist" aria-label="currency select">
+            <button class="currency-btn" data-currency="gbp" id="curGBP">GBP</button>
+            <button class="currency-btn" data-currency="eur" id="curEUR">EUR</button>
+          </div>
+        </div>
+
+        <div class="result" id="result">Calculating…</div>
+
+        <div class="payment-methods" aria-hidden>
+          <div class="pm">Visa</div>
+          <div class="pm">Mastercard</div>
+          <div class="pm">Bank Transfer</div>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:14px">
+          <button class="btn" id="buyNow">Buy Bitcoin Now</button>
+          <button class="btn ghost" id="learnMore">Learn more</button>
+        </div>
+
+        <div class="how" id="how" style="margin-top:18px">
+          <div class="step">
+            <h4>1. Enter amount</h4>
+            <p class="muted">Type how much GBP/EUR you want to spend — the site will show estimated BTC.</p>
+          </div>
+          <div class="step">
+            <h4>2. Verify identity</h4>
+            <p class="muted">Quick KYC to comply with UK & EU regulations — only once for most users.</p>
+          </div>
+          <div class="step">
+            <h4>3. Receive BTC</h4>
+            <p class="muted">BTC is sent to your wallet after payment clears. Option for instant delivery with card purchases.</p>
+          </div>
+        </div>
+
+      </aside>
+    </main>
+
+    <section style="margin-top:22px" class="card">
+      <h3 style="margin:0 0 8px">Why SimpleBitcoin (UK-first)</h3>
+      <p class="muted" style="margin:0 0 12px">We focus on retail customers in the United Kingdom, with full support across the EU. Our workflow and compliance are designed to match UK expectations and regulations — transparent fees, clear payout times, and secure custody partners.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+        <div class="pill">Transparent fees</div>
+        <div class="pill">FCA-focused guidance</div>
+        <div class="pill">UK customer support</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="muted small">© SimpleBitcoin — Registered in the UK. Not financial advice. KYC & AML apply.</div>
+      <div class="small muted">• <a href="#faq" style="color:var(--muted);text-decoration:none">FAQ</a> • <a href="#support" style="color:var(--muted);text-decoration:none">Support</a> • <a href="#legal" style="color:var(--muted);text-decoration:none">Legal</a></div>
+    </footer>
+
+  </div>
+
+  <!-- Modal for quick signup -->
+  <div class="modal-bg" id="modalBg" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3>Create account</h3>
+        <button class="close" id="closeModal">✕</button>
+      </div>
+      <p class="muted small">To buy Bitcoin you’ll need an account and a quick ID check (KYC). We focus on UK users first.</p>
+      <form id="signupForm" style="margin-top:12px">
+        <label class="small muted">Email</label>
+        <input type="email" id="email" required style="width:100%;padding:10px;margin:6px 0;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
+        <label class="small muted">Create password</label>
+        <input type="password" id="password" required style="width:100%;padding:10px;margin:6px 0;border-radius:8px;border:0;background:rgba(255,255,255,0.02);color:inherit" />
+        <button class="btn" style="width:100%;margin-top:10px" type="submit">Create account & buy</button>
+      </form>
+      <p class="muted small" style="margin-top:10px">By creating an account you agree to our Terms & Privacy.</p>
+    </div>
+  </div>
+
+  <script>
+    // SimpleBitcoin — frontend logic
+    (function(){
+      const amountEl = document.getElementById('amount');
+      const resultEl = document.getElementById('result');
+      const curGBP = document.getElementById('curGBP');
+      const curEUR = document.getElementById('curEUR');
+      const buyNow = document.getElementById('buyNow');
+      const signupTop = document.getElementById('signupTop');
+      const modalBg = document.getElementById('modalBg');
+      const closeModal = document.getElementById('closeModal');
+      const signupForm = document.getElementById('signupForm');
+
+      let currency = 'gbp';
+      let price = { gbp: null, eur: null };
+
+      function setActiveCurrency(btn){
+        [curGBP, curEUR].forEach(b=>b.style.borderColor='rgba(255,255,255,0.04)');
+        btn.style.borderColor='rgba(255,255,255,0.12)';
+      }
+
+      curGBP.addEventListener('click', ()=>{ currency='gbp'; setActiveCurrency(curGBP); render(); });
+      curEUR.addEventListener('click', ()=>{ currency='eur'; setActiveCurrency(curEUR); render(); });
+
+      amountEl.addEventListener('input', render);
+
+      // fetch live price from CoinGecko (browser-side). If blocked, fallback to cached value.
+      async function fetchPrice(){
+        try{
+          const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp,eur');
+          const data = await res.json();
+          price.gbp = data.bitcoin.gbp;
+          price.eur = data.bitcoin.eur;
+          render();
+        }catch(e){
+          console.warn('price fetch failed',e);
+          // fallback static placeholder
+          if(!price.gbp) price.gbp = 30000; // placeholder
+          if(!price.eur) price.eur = 35000; // placeholder
+          render();
+        }
+      }
+
+      function render(){
+        const amt = Math.max(0, parseFloat(amountEl.value) || 0);
+        const stepFeePct = 1.5; // example fee
+        const selectedPrice = currency === 'gbp' ? price.gbp : price.eur;
+        if(!selectedPrice){ resultEl.textContent = 'Loading price…'; return }
+        const btcBeforeFee = amt / selectedPrice;
+        const btcAfterFee = btcBeforeFee * (1 - (stepFeePct/100));
+        resultEl.innerHTML = `≈ <strong>${btcAfterFee.toFixed(8)} BTC</strong> • Price: <span class="muted">1 BTC ≈ ${(selectedPrice).toLocaleString(undefined,{minimumFractionDigits:0})} ${currency.toUpperCase()}</span> <div class="small muted">Includes estimated fees (${stepFeePct}% shown)</div>`;
+      }
+
+      // modal handling
+      function openModal(){ modalBg.style.display='flex'; modalBg.setAttribute('aria-hidden','false'); }
+      function closeModalFn(){ modalBg.style.display='none'; modalBg.setAttribute('aria-hidden','true'); }
+      buyNow.addEventListener('click', openModal);
+      signupTop.addEventListener('click', openModal);
+      closeModal.addEventListener('click', closeModalFn);
+      modalBg.addEventListener('click', (e)=>{ if(e.target===modalBg) closeModalFn(); });
+
+      signupForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        // This demo does not actually create accounts. In production, call backend here.
+        const email = document.getElementById('email').value;
+        alert('Thanks, ' + email + '! (demo) — proceed with KYC and payment flow.');
+        closeModalFn();
+      });
+
+      // initial state
+      setActiveCurrency(curGBP);
+      fetchPrice();
+
+      // small UX improvement: keyboard accessibility for currency
+      [curGBP, curEUR].forEach(b=>{
+        b.setAttribute('role','tab'); b.tabIndex=0;
+        b.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') b.click(); });
+      });
+
+    })();
+  </script>
+</body>
+</html>
+
