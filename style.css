@@ -16,11 +16,6 @@
   --section-gap: 54px;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 * {
   user-select: none;
 } 
@@ -136,7 +131,8 @@ body {
 }
 
 .btn.primary {
-  background: linear-gradient(90deg, var(--accent), var(--accent-deep));
+  background: white;
+  color: var(--accent-deep);
   border: none;
   box-shadow: 0 6px 24px rgba(255, 110, 20, 0.18);
 }
