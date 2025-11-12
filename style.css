@@ -101,6 +101,8 @@ body {
 .brand {
   font-size: 14px;
   color: white;
+  margin: 0;
+  padding: 0;
 }
 
 .hero .sub {
