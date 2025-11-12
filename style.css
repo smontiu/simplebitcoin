@@ -29,7 +29,6 @@ body {
   color: #111;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.35;
 }
 
 /* page container */
@@ -41,7 +40,7 @@ body {
 /* --- HERO --- */
 .hero {
   position: relative;
-  height: 520px;
+  max-height: 520px;
   overflow: hidden;
   display: flex;
   align-items: flex-start;
@@ -127,6 +126,10 @@ body {
   color: white;
   cursor: pointer;
   min-width: 120px;
+}
+
+.bottom {
+  align-self: end;
 }
 
 .btn.primary {
@@ -337,15 +340,10 @@ textarea {
   .right-hero {
     max-width: 36%
   }
-
-  .hero {
-    height: 480px
-  }
 }
 
 @media (max-width:880px) {
   .hero {
-    height: 420px;
     align-items: center
   }
 
@@ -387,17 +385,45 @@ textarea {
     font-size: 56px
   }
 
+  .right-hero {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .hero .sub{
+    text-align: center;
+    max-width: initial;
+  }
+  .cta-row {
+    justify-content: center;
+  }
   .right-hero h2 {
     font-size: 36px
   }
 
-  .feature-title {
-    font-size: 20px
+  .feature-row {
+    padding: 10px 0;
   }
 
-  .card {
+  .feature-title {
+    font-size: 20px;
+    min-width: auto;
+  }
+
+  .feature-desc {
+    padding: 0;
+    font-size: 14px;
+  }
+
+  .mid .card {
     width: 100%;
     height: 220px;
     border-radius: 16px
+  }
+  .hero .content{
+    padding: 10px;
+  }
+  .left-hero h2, .right-hero h2{
+    font-size: 65px;
+    line-height: 60px;
   }
 }
