@@ -40,8 +40,6 @@ body {
 /* --- HERO --- */
 .hero {
   position: relative;
-  max-height: 520px;
-  overflow: hidden;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
