@@ -6,7 +6,6 @@
 :root {
   --bg: #fff8f3;
   --accent: #ff7a00;
-  /* bright orange */
   --accent-deep: #ff5a00;
   --muted: #6b6b6b;
   --container: 1100px;
@@ -21,6 +20,10 @@ html,
 body {
   height: 100%;
 }
+
+* {
+  user-select: none;
+} 
 
 body {
   margin: 0;
@@ -106,7 +109,7 @@ body {
 .hero .sub {
   max-width: 300px;
   margin: 10px auto 22px;
-  font-size: 14px;
+  font-size: 26px;
   color: rgba(255, 255, 255, 0.95);
   text-align: right;
 }
@@ -332,14 +335,6 @@ textarea {
   .wrap {
     padding: 0 20px;
   }
-
-  .left-hero {
-    max-width: 60%
-  }
-
-  .right-hero {
-    max-width: 36%
-  }
 }
 
 @media (max-width:880px) {
@@ -392,6 +387,7 @@ textarea {
   .hero .sub{
     text-align: center;
     max-width: initial;
+    font-size: 15px;
   }
   .cta-row {
     justify-content: center;
