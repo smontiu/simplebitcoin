@@ -125,6 +125,7 @@ body {
   cursor: pointer;
   min-width: 120px;
   text-align: center;
+  white-space: nowrap;
 }
 
 .bottom {
@@ -136,6 +137,8 @@ body {
   color: var(--accent-deep);
   border: none;
   box-shadow: 0 6px 24px rgba(255, 110, 20, 0.18);
+  text-decoration: none;
+  font-size: 20px;
 }
 
 /* --- FEATURES ROWS --- */
@@ -409,9 +412,7 @@ textarea {
   }
 
   .mid .card {
-    width: 100%;
-    height: 220px;
-    border-radius: 16px
+    display: none;
   }
   .hero .content{
     padding: 10px;
