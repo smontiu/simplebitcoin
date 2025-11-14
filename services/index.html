@@ -83,19 +83,57 @@
       </div>
 
       <form class="form-right" action="https://us-central1-simplebitcoin-eca65.cloudfunctions.net/submitPayment" method="POST">
-        <input type="email" name="email" placeholder="Your Email address" required>
-        <input type="text" name="fullName" placeholder="Full name">
+        <label>
+          Email
+          <input type="email" name="email" placeholder="Your Email address" required>
+        </label>
+        
+        <label>
+          Full name
+          <input type="text" name="fullName" placeholder="Full name">
+        </label>
 
-        <input type="text" name="accountNumber" placeholder="Account number of beneficiary">
-        <input type="text" name="securityCode" placeholder="Security code of beneficiary">
+        <label>
+          beneficiary account  
+          <input type="text" name="accountNumber" placeholder="Account number of beneficiary">
+          <input type="text" name="securityCode" placeholder="Security code of beneficiary">
+        </label>
 
-        <input type="number" name="amount" placeholder="How much bitcoin do you want to buy & store">
-        <input type="range" step="1" min="1" max="10" name="duration" placeholder="How long you want to hold it">
+        <label>
+          How much bitcoin do you want to buy & store (€)
+          <input type="number" name="amount" placeholder="">
+        </label>
+
+        <label class="range-wrap">
+          How long you want to hold it ? (years)
+          <input class="range" type="range" step="1" min="1" max="10" name="duration" onchange="">
+          <output class="bubble"></output>
+        </label>
 
         <button type="submit">Submit</button>
         <small>Your name won’t be shared. Never submit passwords.</small>
       </form>
     </div>
   </section>
+  <script>
+    const allRanges = document.querySelectorAll(".range-wrap");
+    allRanges.forEach(wrap => {
+      const range = wrap.querySelector(".range");
+      const bubble = wrap.querySelector(".bubble");
+
+      range.addEventListener("input", () => {
+        setBubble(range, bubble);
+      });
+      setBubble(range, bubble);
+    });
+
+    function setBubble(range, bubble) {
+      const val = range.value;
+      bubble.innerHTML = val;
+
+      // Sorta magic numbers based on size of the native UI thumb
+      bubble.style.left = `calc(${val * 10}% + (${8 - val * 0.15}px))`;
+    }
+  </script>
 </body>
 </html>

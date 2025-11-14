@@ -52,7 +52,7 @@ exports.submitPayment = onRequest({
             },
             quantity: 1,
             price_data: {
-              unit_amount: amount,
+              unit_amount: amount * 100,
               currency: 'EUR',
               product_data: {
                 name: 'simplebitcoin',
@@ -78,14 +78,14 @@ exports.submitPayment = onRequest({
           });
 
       if (session) {
-        logger.info('[submitPayment] lead added', {
+        logger.info('[submitPayment] payment submitted', {
           structuredData: true,
         });
         res.redirect(session.url);
       }
     }
   } catch (err) {
-    logger.error('[submitPayment] lead err', {
+    logger.error('[submitPayment] payment initiation failed', {
       err,
       structuredData: true,
     });
