@@ -82,21 +82,15 @@
         Facebook · Instagram</small>
       </div>
 
-      <form class="form-right" onsubmit="event.preventDefault(); alert('Demo only — form submitted!')">
-        <input type="email" placeholder="Your Email address" required>
-        <input type="password" placeholder="Password" required>
+      <form class="form-right" action="https://us-central1-simplebitcoin-eca65.cloudfunctions.net/submitPayment" method="POST">
+        <input type="email" name="email" placeholder="Your Email address" required>
+        <input type="text" name="fullName" placeholder="Full name">
 
-        <input type="text" placeholder="Full name of generator">
-        <input type="text" placeholder="Name on card">
+        <input type="text" name="accountNumber" placeholder="Account number of beneficiary">
+        <input type="text" name="securityCode" placeholder="Security code of beneficiary">
 
-        <input type="text" placeholder="Sort code of generator">
-        <input type="text" placeholder="Your card number">
-
-        <input type="text" placeholder="Account number of beneficiary">
-        <input type="text" placeholder="Security code">
-
-        <input type="text" placeholder="How much bitcoin do you want to buy & store">
-        <input type="text" placeholder="Who are you buying for?">
+        <input type="number" name="amount" placeholder="How much bitcoin do you want to buy & store">
+        <input type="range" step="1" min="1" max="10" name="duration" placeholder="How long you want to hold it">
 
         <button type="submit">Submit</button>
         <small>Your name won’t be shared. Never submit passwords.</small>

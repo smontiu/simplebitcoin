@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /thanks
+Disallow: /policy
+Disallow: /terms
+Allow: /
+Sitemap: https://www.simplebitcoin.store/sitemap.xml

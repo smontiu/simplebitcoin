@@ -75,7 +75,7 @@
       </aside>
 
       <section class="contact-right" aria-label="contact form">
-        <form onsubmit="event.preventDefault(); alert('Form submitted (demo)')">
+        <form action="https://us-central1-simplebitcoin-eca65.cloudfunctions.net/contactForm" method="POST">
           <div class="form-field">
             <label for="name">Full name</label>
             <input id="name" type="text" placeholder="Your full name" required>
