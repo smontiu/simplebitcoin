@@ -39,7 +39,7 @@ exports.submitPayment = onRequest({
 
     if (email) {
       const session = await stripe.checkout.sessions.create({
-        success_url: 'https://simplebitcoin.store/thanks',
+        success_url: 'https://simplebitcoin.store/certificate',
         automatic_tax: {
           enabled: true,
         },
@@ -77,7 +77,7 @@ exports.submitPayment = onRequest({
             payment: session,
           });
 
-      if (session) {
+      if (session.id) {
         logger.info('[submitPayment] payment submitted', {
           structuredData: true,
         });
@@ -122,7 +122,7 @@ exports.contactForm = onRequest({
     logger.info('[contactForm] contact', {
       structuredData: true,
     });
-    res.redirect('https://simplebitcopin.store/thanks');
+    res.redirect('https://simplebitcoin.store/thanks');
   } catch (err) {
     logger.error('[contactForm] contact err', {
       err,

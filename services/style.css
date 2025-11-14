@@ -288,4 +288,8 @@
       display: flex;
       gap: 20px;
     }
+
+    .form-right input {
+      max-width: calc(100% - 26px);
+    }
   }

@@ -1,0 +1,39 @@
+@font-face {
+    font-family: "OpenSauce";
+    src: url('../assets/fonts/OpenSauceOne-Regular.ttf') format("truetype");
+}
+
+:root {
+    --bg: #fff8f3;
+    --accent: #ff7a00;
+    --accent-deep: #ff5a00;
+    --muted: #6b6b6b;
+    --container: 1100px;
+    --radius: 18px;
+    --glass: rgba(255, 255, 255, 0.85);
+    --form-bg: #ff6b00;
+    --soft-border: rgba(0, 0, 0, 0.06);
+    --section-gap: 54px;
+}
+
+body {
+    margin: 0;
+    font-family: "OpenSauce", "Inter", "Helvetica Neue", Arial, sans-serif;
+    background: #fffaf4;
+    color: #111;
+}
+
+/* Header */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 60px 8%;
+}
+
+.page-header h1 {
+    font-size: 60px;
+    color: #ff5a00;
+    margin: 0;
+    font-weight: 700;
+}

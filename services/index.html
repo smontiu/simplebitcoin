@@ -117,6 +117,7 @@
   </section>
   <script>
     const allRanges = document.querySelectorAll(".range-wrap");
+    
     allRanges.forEach(wrap => {
       const range = wrap.querySelector(".range");
       const bubble = wrap.querySelector(".bubble");
@@ -132,7 +133,7 @@
       bubble.innerHTML = val;
 
       // Sorta magic numbers based on size of the native UI thumb
-      bubble.style.left = `calc(${val * 10}% + (${8 - val * 0.15}px))`;
+      bubble.style.left = `calc(${val * 10}% - 15px)`;
     }
   </script>
 </body>
